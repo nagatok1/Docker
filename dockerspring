@@ -1,0 +1,12 @@
+#!/bin/bash
+rm -rf spring-boot-hello-world
+docker stop sbhw
+docker rm sbhw
+docker rmi spring-boot-hello-world
+git clone https://github.com/nagatok1/spring-boot-hello-world
+cd spring-boot*
+mvn clean install
+docker build -t spring-boot-hello-world:latest .
+docker run -d -p 9000:9000 --name sbhw spring-boot-hello-world
+
+
